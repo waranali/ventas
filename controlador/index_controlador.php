@@ -9,6 +9,9 @@ class IndexControlador{
     public function indexInicio(){
         require_once 'vista/index.php';
     }
+    public function indexVentas(){
+        require_once 'vista/ventas.php';
+    }
     public function login(){
         session_start();
         $login=new Usuario();

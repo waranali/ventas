@@ -52,6 +52,7 @@
                                 <thead>
                                     <tr>
                                         <th>N°</th>
+                                        <th hidden></th>
                                         <th>Nombre</th>
                                         <th>Apellido</th>
                                         <th>Ci</th>
@@ -65,13 +66,18 @@
                                     <?php foreach($this->model->mostrar()as $key=>$cliente):?>
                                         <tr>
                                             <td><?php echo $key+1?></td>
+                                            <td hidden><?php echo $cliente->id?></td>
                                             <td><?php echo $cliente->nombre?></td>
                                             <td><?php echo $cliente->apellidos?></td>
                                             <td><?php echo $cliente->ci?></td>
                                             <td><?php echo $cliente->nit?></td>
                                             <td><?php echo $cliente->celular?></td>
                                             <td><?php echo $cliente->direccion?></td>
-                                            <td class="text-center"> <button class="btn btn-primary btn-sm">view</button></td>
+                                            <td class="text-center"> 
+                                            <a onclick="javascript:return confirm('ESTAS SEGURO DE ELIMINAR ESTE REGISTRO?');" href="index.php?controlador=cliente&action=quit&id=<?php echo $cliente->id;?>" class="btn btn-primary btn-sm">ELIMIAR</a>
+                                                <button class="btn btn-primary btn-sm" onclick="capturar()">Editar</button>
+                                                
+                                            </td>
                                         </tr>
                                     <?php endforeach;?>
                                 </tbody>
@@ -141,6 +147,39 @@
     </div>
 
     <!-- Inicializamos los script-->
+    <script>
+        function capturar() {
+            $("table tbody tr").click(function() {
+                var id = $(this).find("td:eq(1)").text();
+                var nombre = $(this).find("td:eq(2)").text();
+                var codigo = $(this).find("td:eq(3)").text();
+                var p_venta = $(this).find("td:eq(4)").text();
+                var p_compra = $(this).find("td:eq(5)").text();
+                var stock = $(this).find("td:eq(6)").text();
+                var alerta = $(this).find("td:eq(7)").text();
+                console.log(alerta);
+                // $('#exampleModalLabel').text('Editar Servicio');
+                $("#id").val(id);
+                $("#nombre").val(nombre);
+                $("#apellidos").val(codigo);
+                $("#ci").val(p_venta);
+                $("#celular").val(p_compra);
+                $("#nit").val(stock);
+                $("#direccion").val(alerta);
+                $('#exampleModal').modal('show')
+            });
+        };
+
+        function limpiar() {
+            $("#id").val("");
+            $("#nombre").val("");
+            $("#apellidos").val("");
+            $("#ci").val("");
+            $("#celular").val("");
+            $("#direccion").val("");
+            $("#alerta").val("");
+        }
+  </script>
     <?php include 'content/script.php' ?>
     <!-- finalizamos los script -->
 

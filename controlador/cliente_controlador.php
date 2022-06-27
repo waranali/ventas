@@ -30,5 +30,11 @@ class ClienteControlador{
 
         header( 'location:index.php?controlador=cliente&action=index' );
     }
+
+    public function quit(){
+        $this->model->eliminar($_REQUEST['id']);
+        header('location:index.php?controlador=cliente&action=index');
+    }
+
 }
 ?>

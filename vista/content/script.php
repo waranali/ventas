@@ -44,3 +44,12 @@
         });
     });
 </script>
+    <script src="theme/assets/js/scrollspyNav.js"></script>
+    <script src="theme/plugins/select2/select2.min.js"></script>
+    <script src="theme/plugins/select2/custom-select2.js"></script>
+    <!-- select -->
+    <script src="theme/assets/js/scrollspyNav.js"></script>
+    <script src="theme/plugins/sweetalerts/sweetalert2.min.js"></script>
+    <script src="theme/plugins/sweetalerts/custom-sweetalert.js"></script>
+    <!-- alert -->
+    <script src="theme/assets/js/scrollspyNav.js"></script>

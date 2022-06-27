@@ -21,3 +21,17 @@
     <link rel="stylesheet" type="text/css" href="theme/plugins/table/datatable/datatables.css">
     <link rel="stylesheet" type="text/css" href="theme/plugins/table/datatable/dt-global_style.css">
     <link rel="stylesheet" type="text/css" href="theme/plugins/table/datatable/custom_dt_multiple_tables.css">
+    <link href="theme/assets/css/scrollspyNav.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="theme/plugins/select2/select2.min.css">
+    <!-- select -->
+    <link href="theme/assets/css/scrollspyNav.css" rel="stylesheet" type="text/css" />
+    <link href="theme/plugins/animate/animate.css" rel="stylesheet" type="text/css" />
+    <script src="theme/plugins/sweetalerts/promise-polyfill.js"></script>
+    <link href="theme/plugins/sweetalerts/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    <link href="theme/plugins/sweetalerts/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="theme/assets/css/components/custom-sweetalert.css" rel="stylesheet" type="text/css" />
+    <!-- alert -->
+    <link rel="stylesheet" type="text/css" href="theme/assets/css/elements/alert.css">
+    <style>
+        .btn-light { border-color: transparent; }
+    </style>

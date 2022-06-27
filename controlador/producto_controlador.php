@@ -30,5 +30,19 @@ class ProductoControlador{
 
         header( 'location:index.php?controlador=producto&action=index' );
     }
+    public function addstock(){
+        $producto = new  Producto();
+        $productoA = new  Producto();
+        $a=$producto->obtenerxId($_REQUEST ['id_p']);
+        $productoA->id = $a->id;
+        $productoA->nombre = $a->nombre;
+        $productoA->codigo = $a->codigo;
+        $productoA->p_venta = $a->p_venta;
+        $productoA->p_compra = $a->p_compra;
+        $productoA->stock = ($a->stock+$_REQUEST ['stock']);
+        $productoA->alerta = $a->alerta;
+        $productoA->actualizar();
+        header( 'location:index.php?controlador=producto&action=index' );
+    }
 }
 ?>

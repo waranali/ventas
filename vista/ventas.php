@@ -36,18 +36,57 @@
                 <!-- titulo -->
                 <div class="page-header">
                     <div class="page-title">
-                        <h3>Categorias</h3>
-                        <div class="">
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Añadir</button>
-                        </div>
+                        <h3>Ventas Pos</h3>
                     </div>
-
                 </div>
                 
+                <!-- tabla -->
+                <div class="row" id="cancel-row">
+                    <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+                        <div class="widget-content widget-content-area br-6">
+                            <table class="multi-table table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>N°</th>
+                                        <th>Cliente</th>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach($this->model->mostrar()as $key=>$venta):
+                                        $client=$cliente->obtenerxId($venta->cliente_id);?>
+                                        <tr>
+                                            <td><?php echo $key+1?></td>
+                                            <td><?php echo $client->nombre." ".$client->apellidos ?></td>
+                                            <td><?php echo $producto->obtenerxId($venta->cliente_id)->nombre?></td>
+                                            <td><?php echo $venta->cantidad?></td>
+                                            <td><?php echo $venta->precio?></td>
+                                            <td><?php echo $venta->fecha?></td>
+                                        </tr>
+                                    <?php endforeach;?>
+                                </tbody>
+                                <!-- <tfoot>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
+                                        <th>Salary</th>
+                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </tfoot> -->
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!--  Finalizamos el contenido -->
-       
+        
 
 
     </div>

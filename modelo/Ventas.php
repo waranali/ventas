@@ -1,14 +1,14 @@
 <?php
 require_once 'core/crud.php';
-class Producto extends Crud{
+class Ventas extends Crud{
     private $id;
-    private $nombre;
-    private $codigo;
-    private $p_venta;
-    private $p_compra;
-    private $stock;
-    private $alerta;
-    const TABLE='producto';
+    private $nro_venta;
+    private $cantidad;
+    private $precio;
+    private $producto_id;
+    private $cliente_id;
+    private $fecha;
+    const TABLE='ventas';
     private $pdo;
     public function __construct(){
         parent::__construct(self::TABLE);
@@ -24,8 +24,8 @@ class Producto extends Crud{
 
     public function crear(){  
           try{
-            $stm=$this->pdo->prepare("INSERT INTO ".self::TABLE." (nombre, codigo, p_venta, p_compra, stock, alerta) VALUES (?,?,?,?,?,?)");
-            $stm->execute(array($this->nombre,$this->codigo,$this->p_venta,$this->p_compra,$this->stock,$this->alerta));
+            $stm=$this->pdo->prepare("INSERT INTO ".self::TABLE." (nro_venta, cantidad, precio, producto_id, cliente_id,fecha) VALUES (?,?,?,?,?,now())");
+            $stm->execute(array($this->nro_venta,$this->cantidad,$this->precio,$this->producto_id,$this->cliente_id));
           }catch(PDOException $e){
             echo $e->getMessage();
           }
@@ -33,23 +33,12 @@ class Producto extends Crud{
     
     public function actualizar(){
         try{
-            $stm=$this->pdo->prepare("UPDATE ".self::TABLE." SET nombre=?, codigo=?, p_venta=?, p_compra=?, stock=?, alerta=? WHERE id=?");
-            $stm->execute(array($this->nombre,$this->codigo,$this->p_venta,$this->p_compra,$this->stock,$this->alerta,$this->id));
+            $stm=$this->pdo->prepare("UPDATE ".self::TABLE." SET nro_venta=?, cantidad=?, precio=?, producto_id=?, cliente_id=? WHERE id=?");
+            $stm->execute(array($this->nro_venta,$this->cantidad,$this->precio,$this->producto_id,$this->cliente_id,$this->id));
           }catch(PDOException $e){
             echo $e->getMessage();
           }
     }
-
-    public function mostrarIds($ids){
-        try {    
-            $stm = $this->pdo->prepare("SELECT * FROM ".self::TABLE." WHERE id IN (".$ids.")");
-            $stm->execute();
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-        } catch (PDOException $e) {
-            die($e->getMessage()) ;
-        }
-    }
-    
     public function buscar($a){
       $consulta = "SELECT * FROM ".self::TABLE." ";
       $busqueda = null;
